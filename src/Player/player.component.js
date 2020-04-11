@@ -11,9 +11,7 @@ class RoutinePlayer extends HTMLElement {
   }
 
   connectedCallback(){
-    const stroke = 10;
-    const radius = 140;
-    //const normalizedRadius = radius - stroke*2;
+    const radius = 48;
 
     this.currentStep = 0;
     this.numberOfSteps = data.steps.length;
@@ -22,24 +20,40 @@ class RoutinePlayer extends HTMLElement {
 
     this.innerHTML = html;
 
-    this.svg    = this.querySelector('.RoutinePlayer__svg');
-    this.circle = this.querySelector('.RoutinePlayer__circle');
-    this.button = this.querySelector('.RoutinePlayer__nextStep');
-
-    this.setProgress(0);
+    this.label       = this.querySelector('.RoutinePlayer__label');
+    this.svg         = this.querySelector('.RoutinePlayer__svg');
+    this.circle      = this.querySelector('.RoutinePlayer__circle');
+    this.button      = this.querySelector('.RoutinePlayer__nextButton');
+    this.stepLabel   = this.querySelector('.RoutinePlayer__stepLabel');
+    this.stepDetails = this.querySelector('.RoutinePlayer__stepDetails');
 
     this.button.addEventListener('click', this.nextStep.bind(this));
 
-    //this.circle.style.r  = radius;
-    //this.circle.style.cx = radius;
-    //this.circle.style.cy = radius;
+    this.label.innerText = data.name;
 
     this.circle.style.strokeDasharray = `${this.circumference} ${this.circumference}`;
+
+    this.step(0);
+  }
+
+  step(num){
+    num = Math.max(0, Math.min(this.numberOfSteps, num));
+
+    if (num === this.numberOfSteps){
+      this.stepLabel.innerText = "COMPLETE!";
+      this.stepDetails.innerText = "";
+    } else {
+      this.stepLabel.innerText = data.steps[num].label;
+      this.stepDetails.innerText = data.steps[num].details;
+    }
+
+    this.currentStep = num;
+    this.setProgress( (100/this.numberOfSteps) * num);
+
   }
 
   nextStep(){
-    this.currentStep++;
-    this.setProgress( (100/this.numberOfSteps) * this.currentStep);
+    this.step(++this.currentStep);
   }
 
   static get observedAttributes(){

@@ -1,23 +1,48 @@
+@import '~theme'
+
 routine-player
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  display: block
+  text-align: center
+  font-family: Helvetica, sans-serif
+  color: darken($text-color, 30)
 
 .RoutinePlayer
-  border: solid 1px green
+  &__label
+    width: 100%
+    height: 30px
+
+  &__stepInfo
+    height: 50px;
+
+  &__stepLabel
+    margin-bottom: 5px
 
   &__svg
-    border: solid 1px red
-    height: 300px
-    width: 300px
+    height: calc(100% - 200px)
+    width: 70%;
 
-  &__circle, &__circle--shadow
+  &__circle, &__circle--track
     fill: transparent
-    stroke-width: 10
+    stroke-width: 3
     stroke-linecap: round
     transform-origin: 50% 50%
     transform: rotate(-90deg)
 
   &__circle
-    stroke: blue
+    stroke: $wheel-color
     transition: stroke-dashoffset 0.35s
 
-  &__circle--shadow
-    stroke: grey
+  &__circle--track
+    stroke: $text-color
+
+  &__nextButton
+    cursor: pointer
+    fill: $text-color
+
+    &:hover
+      fill: darken($text-color, 30)
