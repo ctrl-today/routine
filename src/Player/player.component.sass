@@ -1,0 +1,23 @@
+routine-player
+
+.RoutinePlayer
+  border: solid 1px green
+
+  &__svg
+    border: solid 1px red
+    height: 300px
+    width: 300px
+
+  &__circle, &__circle--shadow
+    fill: transparent
+    stroke-width: 10
+    stroke-linecap: round
+    transform-origin: 50% 50%
+    transform: rotate(-90deg)
+
+  &__circle
+    stroke: blue
+    transition: stroke-dashoffset 0.35s
+
+  &__circle--shadow
+    stroke: grey
