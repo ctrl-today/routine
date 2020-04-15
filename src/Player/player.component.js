@@ -4,12 +4,6 @@ import html from './player.component.html';
 
 class RoutinePlayer extends HTMLElement {
 
- attributeChangedCallback(name, oldV, newV) {
-    if (name === 'progress') {
-      this.setProgress(newV);
-    }
-  }
-
   connectedCallback(){
     const radius = 48;
 

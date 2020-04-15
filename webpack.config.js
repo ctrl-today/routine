@@ -1,17 +1,15 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
   entry: {
-    player: './src/Player/player.component.js'
+    player: './src/Player/player.component.js',
+    editor: './src/Editor/editor.js'
   },
   output: {
     filename: 'bundle/[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-  },
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
   },
   module: {
     rules: [
@@ -25,7 +23,22 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'src/editor.html',
+    }),
+    new HtmlWebpackPlugin({
+      filename: "player.html",
+      template: "src/player.html",
+      chunks: ['player']
+    })
+  ],
   resolve: {
     modules: [path.resolve(__dirname, 'src'), 'node_modules']
+  },
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
   }
 };
