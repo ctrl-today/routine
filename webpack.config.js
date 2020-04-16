@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   entry: {
     player: './src/Player/player.component.js',
-    editor: './src/Editor/editor.js'
+    editor: './src/Editor/editor.component.js'
   },
   output: {
     filename: 'bundle/[name].bundle.js',
