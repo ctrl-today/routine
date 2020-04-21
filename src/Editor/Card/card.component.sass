@@ -1,10 +1,10 @@
 @import '~theme'
 
 routine-editor-card
+  border-radius: 3px
   display: block
   margin: 20px 0
   padding: 10px
-  border-radius: 3px
 
   .RoutineEditor__divider--horizontal
     background: lighten($text-color, 30)
@@ -16,13 +16,22 @@ routine-editor-card
 
     label
       display: inline-block
-      width: 100px
       padding-right: 10px
       text-align: right
+      width: 100px
     input
-      flex: 1 1 auto
+      font-size: 1em
     textarea
-      flex: 1 1 auto
       display: inline-block
+      font-family: inherit
+      font-size: 1em
       height: 100px
       resize: vertical
+
+    input, textarea
+      border: none
+      flex: 1 1 auto
+      outline: none
+      &::placeholder
+        color: lighten($text-color, 30)
+        opacity: 1

@@ -9,22 +9,24 @@ body
 
 routine-editor
   display: flex
+  font-family: Helvetica, sans-serif
+  font-size: 20px
   height: 100vh
   padding: 10px
-  font-family: Helvetica, sans-serif
 
 .RoutineEditor
   &__configure
     flex: 1 100 500px
+    padding: 10px
     max-width: 500px
     min-width: 300px
-    margin: 10px
+    overflow: auto
 
   &__divider,
   &__divider--vertical,
   &__divider--horizontal,
-    border-radius: 5px
     background: $text-color
+    border-radius: 5px
     flex: 0 0 auto
 
   &__divider,
@@ -35,7 +37,7 @@ routine-editor
     height: 5px
 
   &__preview
-    position: relative
     flex: 100 1 500px
     min-width: 400px
     padding-left: 10px
+    position: relative

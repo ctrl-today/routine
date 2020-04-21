@@ -2,7 +2,7 @@ import { data } from 'mockData';
 import html from './editor.component.html';
 import "./editor.component.sass";
 
-import "./Card/card.component.js";
+import { RoutineEditorCard } from "./Card/card.component.js";
 
 class RoutineEditor extends HTMLElement {
   connectedCallback(){
@@ -13,8 +13,7 @@ class RoutineEditor extends HTMLElement {
     this.stepsElm = template.content.querySelector('.RoutineEditor__steps');
 
     for(const [i, step] of data.steps.entries()) {
-      console.log(i);
-      let cardElm = document.createElement('routine-editor-card');
+      let cardElm = new RoutineEditorCard();
       cardElm.addEventListener('click', ()=> this.previewStep(i), false);
       this.stepsElm.appendChild(cardElm);
     }
