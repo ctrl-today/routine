@@ -1,0 +1,28 @@
+@import '~theme'
+
+routine-editor-card
+  display: block
+  margin: 20px 0
+  padding: 10px
+  border-radius: 3px
+
+  .RoutineEditor__divider--horizontal
+    background: lighten($text-color, 30)
+
+.RoutineCard
+  &__field
+    display: flex
+    padding-bottom: 10px
+
+    label
+      display: inline-block
+      width: 100px
+      padding-right: 10px
+      text-align: right
+    input
+      flex: 1 1 auto
+    textarea
+      flex: 1 1 auto
+      display: inline-block
+      height: 100px
+      resize: vertical

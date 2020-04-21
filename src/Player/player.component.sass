@@ -9,7 +9,7 @@ routine-player
   display: block
   text-align: center
   font-family: Helvetica, sans-serif
-  color: darken($text-color, 30)
+  color: $text-color, 30
 
 .RoutinePlayer
   &__label
@@ -28,7 +28,7 @@ routine-player
 
   &__circle, &__circle--track
     fill: transparent
-    stroke-width: 3
+    stroke-width: 8
     stroke-linecap: round
     transform-origin: 50% 50%
     transform: rotate(-90deg)
@@ -38,14 +38,14 @@ routine-player
     transition: stroke-dashoffset 0.35s
 
   &__circle--track
-    stroke: $text-color
+    stroke: lighten($text-color, 30)
 
   &__nextButton
     cursor: pointer
-    fill: $text-color
+    fill: lighten($text-color, 30)
 
     &:hover
-      fill: darken($text-color, 30)
+      fill: $text-color
     &:active
-      fill: darken($text-color, 20)
+      fill: lighten($text-color, 10)
 

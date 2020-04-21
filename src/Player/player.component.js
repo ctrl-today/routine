@@ -5,7 +5,7 @@ import html from './player.component.html';
 class RoutinePlayer extends HTMLElement {
 
   connectedCallback(){
-    const radius = 48;
+    const radius = 46;
 
     this.currentStep = 0;
     this.numberOfSteps = data.steps.length;
