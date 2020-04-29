@@ -27,6 +27,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/editor.html',
+      chunks: ['editor']
     }),
     new HtmlWebpackPlugin({
       filename: "player.html",

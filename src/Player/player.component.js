@@ -6,9 +6,9 @@ class RoutinePlayer extends HTMLElement {
 
   connectedCallback(){
     const radius = 46;
+    window.pd = data;
 
     this.currentStep = 0;
-    this.numberOfSteps = data.steps.length;
 
     this.circumference = radius * 2 * Math.PI;
 
@@ -31,9 +31,10 @@ class RoutinePlayer extends HTMLElement {
   }
 
   step(num){
-    num = Math.max(0, Math.min(this.numberOfSteps, num));
+    let stepslength = data.steps.length;
+    num = Math.max(0, Math.min(stepslength, num));
 
-    if (num === this.numberOfSteps){
+    if (num === stepslength){
       this.stepLabel.innerText = "COMPLETE!";
       this.stepDetails.innerText = "";
     } else {
@@ -42,7 +43,7 @@ class RoutinePlayer extends HTMLElement {
     }
 
     this.currentStep = num;
-    this.setProgress( (100/this.numberOfSteps) * num);
+    this.setProgress( (100/stepslength) * num);
 
   }
 
