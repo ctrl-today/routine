@@ -1,9 +1,9 @@
 import { data } from 'mockData';
-import html from './editor.component.html';
-import "./editor.component.sass";
-import "../Player/player.component.js";
+import html from './editor.html';
+import "./editor.sass";
+import "../Player/player.js";
 
-import { RoutineEditorCard } from "./Card/card.component.js";
+import { RoutineEditorCard } from "./Card/card.js";
 
 class Step {
   constructor(){
@@ -16,7 +16,6 @@ class RoutineEditor extends HTMLElement {
   connectedCallback(){
     const template = document.createElement('template');
     template.innerHTML = html.trim();
-    window.ed = data;
 
     this.playerPreview = template.content.querySelector('routine-player');
     this.stepsElm      = template.content.querySelector('.RoutineEditor__steps');

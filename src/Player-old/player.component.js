@@ -44,7 +44,6 @@ class RoutinePlayer extends HTMLElement {
 
     this.currentStep = num;
     this.setProgress( (100/stepslength) * num);
-
   }
 
   nextStep(){

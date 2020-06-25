@@ -1,0 +1,29 @@
+@import '~theme'
+
+.progress-wheel
+  &__svg
+    height: 100%
+    width: 100%
+
+  &__circle, &__circle--track
+    fill: transparent
+    stroke-linecap: round
+    stroke-width: 4
+    transform-origin: 50% 50%
+    transform: rotate(-90deg)
+
+  &__circle
+    stroke: $text-color
+    transition: stroke-dashoffset 0.35s
+
+  &__circle--track
+    stroke: $brand-accent
+
+  &__nextButton
+    cursor: pointer
+    fill: $brand-primary
+
+    &:hover
+      fill: $text-color
+    &:active
+      fill: lighten($text-color, 10)

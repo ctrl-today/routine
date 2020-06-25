@@ -2,19 +2,45 @@
 
 routine-player
   position: absolute
+  display: flex
   top: 0
   left: 0
   width: 100%
   height: 100%
-  display: block
-  text-align: center
+  flex-direction: column
+  font-size: 16px
   font-family: Helvetica, sans-serif
   color: $text-color, 30
 
+  *
+    -webkit-tap-highlight-color: transparent;
+
 .RoutinePlayer
-  &__label
+  &__navigation
+    display: flex
+    flex-direction: row
+    flex: 0 0 auto
+    max-height: 200px
+    height: 20%
     width: 100%
-    height: 30px
+    padding: 1em
+    box-shadow: 1px 1px 5px #000
+
+  &__steps
+    background: red
+    border: solid 2px blue
+    flex: 100 1 auto
+
+  &__progressWheel
+    flex: 1 1 auto
+    height: 100%
+    position: relative
+    width: 33%
+
+  &__label
+    flex: 10 1 auto
+    max-width: 66%
+    font-size: 5em
 
   &__stepInfo
     height: 50px;
@@ -23,8 +49,8 @@ routine-player
     margin-bottom: 5px
 
   &__svg
-    height: calc(100% - 200px)
-    width: 70%;
+    max-height: 100%
+    max-width: 100%
 
   &__circle, &__circle--track
     fill: transparent

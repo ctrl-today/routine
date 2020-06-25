@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    player: './src/Player/player.component.js',
-    editor: './src/Editor/editor.component.js'
+    player: './src/Player/player.js',
+    editor: './src/Editor/editor.js'
   },
   output: {
     filename: 'bundle/[name].bundle.js',
