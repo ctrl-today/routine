@@ -1,4 +1,3 @@
-console.log('initialize');
 const data = {
   name: "Mock Routine",
   steps: [
@@ -19,6 +18,10 @@ const data = {
       details: "For now you just get to look what I've written in mockData.js"
     },
     {
+      label: "Step five",
+      details: "(it really just exports a json object.)"
+    },
+    {
       label: "Step one",
       details: "This is the first step, it's where you do the first thing you're supposed to do"
     },
@@ -34,13 +37,10 @@ const data = {
       label: "Step four, idiot",
       details: "For now you just get to look what I've written in mockData.js"
     },
-    //{
-      //label: "Step five",
-      //details: "(it really just exports a json object.)"
-    //},
+    {
+      label: "Step five",
+      details: "(it really just exports a json object.)"
+    },
   ]
 };
-
-
-
 export {data};
