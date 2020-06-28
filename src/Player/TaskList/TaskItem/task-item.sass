@@ -1,12 +1,7 @@
 @import '~theme'
 
 task-item
-  color: $text-color
-  display: flex
-  font-family: helvetica, sans-serif
-  font-size: 40px
-  height: $gutter-size*4
-  margin: $gutter-size/2 $gutter-size
+  display: block
 
   &:first-child
     margin-top: $gutter-size
@@ -17,6 +12,38 @@ task-item
     box-sizing: border-box
 
 .TaskItem
+  &__wrapper
+    color: $text-color
+    display: flex
+    font-family: helvetica, sans-serif
+    font-size: 40px
+    height: $gutter-size*4
+    margin: $gutter-size/2 $gutter-size
+
+  &__inputCheckbox
+    display: none
+
+    &:checked
+      height: 50px
+      width: 50px
+
+      ~ .TaskItem__body
+        background: $fg-disabled
+        color: $fg-disabled
+        &::after
+          border-left-color: $fg-disabled
+
+        .TaskItem__details
+          background: $text-color
+          border-color: $text-color
+
+      ~ .TaskItem__checkbox .checkbox
+          background-image: linear-gradient( to bottom, $brand-secondary 0%, $brand-secondary 50%, $brand-primary 50%, $brand-primary 100%)
+          border: none
+
+          + .checkbox__icon--selected 
+            display: block
+
   &__body
     background: $fg-main
     flex: 1 1 auto
@@ -48,23 +75,29 @@ task-item
       display: none
 
   &__checkbox
+    position: relative
     flex: 0 0 auto
     width: $gutter-size*3.5
     display: flex
     justify-content: center
     align-items: center
 
-    input
+    .checkbox
       height: 0
       width:  0
-      &:checked
-        &::after
-          background: $brand-primary
-      &::after
-        content: ''
-        display: block
-        border: solid $gutter-size/4 $fg-disabled
-        background: $fg-main
-        height: $gutter-size*1.25
-        width: $gutter-size*1.25
-        transform: translate(-50%, -50%)
+      content: ''
+      box-sizing: border-box
+      display: block
+      border: solid $gutter-size/4 $fg-disabled
+      background-color: $fg-main
+      height: $gutter-size*1.75
+      width: $gutter-size*1.75
+
+      + .checkbox__icon--selected 
+        display: none
+        height: $gutter-size*1.50
+        width: $gutter-size*1.50
+        position: absolute
+
+        path
+          fill: #fff

@@ -23,8 +23,9 @@ class TaskList extends HTMLElement {
     });
   }
 
-  addStep(){
-    let taskItem = new TaskItem();
+  addStep(step, i){
+    step.id = i;
+    let taskItem = new TaskItem(step);
     this.listElm.appendChild(taskItem);
   }
 }
