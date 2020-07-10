@@ -26,13 +26,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'src/editor.html',
-      chunks: ['editor']
+      template: 'src/player.html',
+      chunks: ['player']
     }),
     new HtmlWebpackPlugin({
-      filename: "player.html",
-      template: "src/player.html",
-      chunks: ['player']
+      filename: "editor.html",
+      template: "src/editor.html",
+      chunks: ['editor']
     })
   ],
   resolve: {

@@ -12,6 +12,14 @@ task-item
     box-sizing: border-box
 
 .TaskItem
+
+  &--active .TaskItem
+    &__details
+      color: $fg-main
+      background-image: linear-gradient( to bottom, $brand-secondary 0%, $brand-secondary 50%, $brand-primary 50%, $brand-primary 100%)
+      border: none
+  // Close TaskItem--active
+
   &__wrapper
     color: $text-color
     display: flex

@@ -3,24 +3,25 @@ import "./task-list.sass";
 import html from './task-list.html';
 
 import { TaskItem } from './TaskItem/task-item.js';
-import { FireService } from "utils/FireService.js"
 
-class TaskList extends HTMLElement {
+export class TaskList extends HTMLElement {
+
+  constructor(){
+    super();
+    this.template = document.createElement('template');
+    this.template.innerHTML = html.trim();
+
+    this.listElm = this.template.content.querySelector('.TaskList__list');
+  }
+
   connectedCallback(){
-    const template = document.createElement('template');
-    template.innerHTML = html.trim();
+    this.appendChild(this.template.content);
+  }
 
-    this.listElm = template.content.querySelector('.TaskList__list');
-
-
-    document.addEventListener('DOMContentLoaded', async event => {
-      const fs = new FireService();
-      let routine = await fs.getRoutines();
-
-      for(const [i, step] of routine.steps.entries()) this.addStep(step, i);
-
-      this.appendChild(template.content);
-    });
+  set steps(steps) {
+    this._steps = steps;
+    // TODO: MOVE THIS TO A BLUK DOM OPERATION issue#14
+    for(const [i, step] of steps.entries()) this.addStep(step, i);
   }
 
   addStep(step, i){
@@ -28,6 +29,7 @@ class TaskList extends HTMLElement {
     let taskItem = new TaskItem(step);
     this.listElm.appendChild(taskItem);
   }
+
 }
 
 customElements.define('task-list', TaskList);

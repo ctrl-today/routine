@@ -29,7 +29,6 @@ export class FireService {
 
 		return routines.get().then(doc => {
 			let data = doc.data();
-			console.log(data);
 			return data;
 		});
 	}

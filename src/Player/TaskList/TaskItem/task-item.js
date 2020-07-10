@@ -4,9 +4,9 @@ import html from './task-item.html';
 import { PlayerState } from "Player/player";
 
 export class TaskItem extends HTMLElement {
-  constructor(task){
+  constructor(step){
     super();
-    this.task = task;
+    this.step = step;
   }
   connectedCallback(){
     const template = document.createElement('template');
@@ -17,14 +17,22 @@ export class TaskItem extends HTMLElement {
       inputCheckbox: template.content.querySelector('.TaskItem__inputCheckbox'),
     };
 
-    this.elm.label.innerHTML  = this.task.label;
+    this.elm.label.innerHTML = this.step.label;
     this.elm.inputCheckbox.addEventListener('change', this.toggleStep.bind(this));
+
+    PlayerState.subscribe('set-active-step', this.checkActive.bind(this));
 
     this.appendChild(template.content);
   }
 
-  toggleStep(){
-    PlayerState.publish('set-current-step', this.task.label);
+  toggleStep(e) {
+    this.step.complete = e.target.checked;
+    PlayerState.publish('toggle-step', this.step);
+  }
+
+  checkActive(step){
+    if(step === this.step)  this.classList.add('TaskItem--active');
+    else if (this.classList.contains('TaskItem--active')) this.classList.remove('TaskItem--active');
   }
 }
 
