@@ -33,6 +33,14 @@ class RoutinePlayer extends HTMLElement {
 
   toggleStep(step) {
     if(this.activeStep === step || this.isStepBeforeActiveStep(step)) this.findActiveStep();
+    this.findPercentComplete();
+  }
+
+  findPercentComplete() {
+    var l = this.routine.steps.length;
+    var c = this.routine.steps.reduce(((c,e) => e.complete? ++c:c), 0);
+    var p = (100/l)*c;
+    PlayerState.publish('set-percent-complete', p);
   }
 
   setActiveStep(step){

@@ -21,6 +21,7 @@ export class TaskItem extends HTMLElement {
     this.elm.inputCheckbox.addEventListener('change', this.toggleStep.bind(this));
 
     PlayerState.subscribe('set-active-step', this.checkActive.bind(this));
+    PlayerState.subscribe('complete-active-step', this.completeActiveStep.bind(this));
 
     this.appendChild(template.content);
   }
@@ -30,8 +31,13 @@ export class TaskItem extends HTMLElement {
     PlayerState.publish('toggle-step', this.step);
   }
 
-  checkActive(step){
-    if(step === this.step)  this.classList.add('TaskItem--active');
+  completeActiveStep() {
+    if (this.active) window.setTimeout(() => this.elm.inputCheckbox.click(), 0);
+  }
+
+  checkActive(step) {
+    this.active = (step === this.step);
+    if (this.active) this.classList.add('TaskItem--active');
     else if (this.classList.contains('TaskItem--active')) this.classList.remove('TaskItem--active');
   }
 }

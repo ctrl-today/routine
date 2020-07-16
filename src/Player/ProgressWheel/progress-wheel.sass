@@ -13,17 +13,11 @@
     transform: rotate(-90deg)
 
   &__circle
-    stroke: $text-color
+    stroke: $brand-accent
     transition: stroke-dashoffset 0.35s
 
   &__circle--track
-    stroke: $brand-accent
+    stroke: $fg-disabled
 
-  &__nextButton
-    cursor: pointer
+  &__play
     fill: $brand-primary
-
-    &:hover
-      fill: $text-color
-    &:active
-      fill: lighten($text-color, 10)
